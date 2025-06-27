@@ -8,7 +8,6 @@ import PyPDF2
 import streamlit as st
 from streamlit import session_state as ss
 from st_files_connection import FilesConnection as ss
-from granite_utils.tokenizer import GraniteTokenizer
 from langchain_ollama.llms import OllamaLLM
 from langchain_community.llms import Replicate  
 from ibm_granite_community.notebook_utils import get_env_var
@@ -34,7 +33,7 @@ if "instructions.pdf":
     reader = PyPDF2.PdfReader("instructions.pdf")
     for page in reader.pages:
         instructiontext += page.extract_text() or ""
-tokenizer = GraniteTokenizer(model_path)
+tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
 
 
 #Finding a particular string

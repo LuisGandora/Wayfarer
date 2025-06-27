@@ -4,6 +4,7 @@ numpy
 PyPDF2
 git+https://github.com/ibm-granite-community/utils.git
 transformers==4.40.1
+langchain
 langchain_ollama
 langchain_community
 replicate
