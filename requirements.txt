@@ -3,7 +3,7 @@ st-files-connection
 numpy
 PyPDF2
 git+https://github.com/ibm-granite-community/utils.git
-transformers
+transformers==4.40.1
 langchain_ollama
 langchain_community
 replicate
