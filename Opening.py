@@ -16,7 +16,7 @@ from transformers import AutoTokenizer
 st.set_page_config(page_title="Wayfarer", layout="centered")
 st.title("Wayfarer")
 model_path = "ibm-granite/granite-3.3-8b-instruct"
-repAPI = st.secrets["rep"]["REPLICATE_API_TOKEN"]
+repAPI = st.secrets["REPLICATE_API_TOKEN"]
 model = Replicate(
     model = model_path,
     replicate_api_token=repAPI,
