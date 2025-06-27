@@ -1,0 +1,133 @@
+Wayfarer: Secure Document Validation & Signature System
+Wayfarer is a secure document integrity system designed for enterprise use, featuring a custom 3D path-based encryption layer to sign and verify PDF documents with traceable and tamper-resistant hash signatures. Built with Python, Streamlit, and IBM Granite AI, Wayfarer enables professionals to validate sensitive documents with ease and reliability.
+
+🔐 Core Features
+3D Path-Based Signature Generation: Embeds dynamic, procedurally generated 3D path hashes into PDF metadata using SHA-256.
+
+PDF Signing and Verification: Enables users to embed and later verify cryptographic signatures in PDFs.
+
+Streamlit Frontend: An interactive, user-friendly interface for uploading documents, entering commands, and interacting with the AI assistant.
+
+Granite/Replicate LLM Integration: Utilizes IBM Granite and Replicate models for guided responses and fallback handling for failed validations.
+
+One-Time Key Mechanism: Ensures every document has a unique signature derived from a randomized seed.
+
+Instruction-Aware Language Model: Custom prompt integration from a PDF-based instruction set to help guide user queries and flag errors.
+
+📁 File Structure
+graphql
+Copy
+Edit
+wayfarer/
+│
+├── Encryptor.py           # Main encryption and verification logic
+├── app.py                 # Streamlit-based UI + LLM integration
+├── instructions.pdf       # Embedded instruction set for AI model
+├── temp/                  # Stores uploaded PDFs temporarily
+├── requirements.txt       # Python dependencies
+└── README.md              # This file
+
+🛠️ Technologies Used
+Component	Description
+Python 3.10+	Core language
+PyPDF2	PDF manipulation
+Streamlit	Frontend UI
+NumPy	Path simulation
+hashlib	SHA-256 encryption
+IBM Granite 3B LLM	Language model for fallback + validation
+Replicate	Secondary AI model
+Transformers	Tokenizer for prompt management
+
+🚀 Getting Started
+1. Clone the Repository
+bash
+Copy
+Edit
+git clone https://github.com/your_org/wayfarer.git
+cd wayfarer
+2. Install Requirements
+bash
+Copy
+Edit
+pip install -r requirements.txt
+3. Configure Secrets
+Create a .streamlit/secrets.toml file:
+
+toml
+Copy
+Edit
+[rep]
+REPLICATE_API_TOKEN = "your_replicate_api_key_here"
+Make sure you also place your instructions.pdf file in the root directory.
+
+🔧 Usage
+Run the application:
+
+bash
+Copy
+Edit
+streamlit run app.py
+Available Commands in Chat:
+Command	Description
+encrypt	Upload a PDF and the app returns a one-time-use signed version with a 3D path-based signature.
+validate + key:<signature>	Upload a previously signed PDF and validate it against the provided key.
+menu	Displays available commands
+exit	Closes the chat session
+
+🧪 Example Workflow
+User uploads contract.pdf
+
+Types: encrypt
+
+Receives a signed PDF + signature key
+
+User sends signed PDF + key to a colleague
+
+Colleague uploads signed PDF, types validate key:<received_signature>
+
+System verifies authenticity and confirms document integrity.
+
+🔐 Signature Design & Security
+📌 How It Works:
+A 3D path is procedurally generated based on a randomized seed.
+
+Path is converted into a string of coordinates and concatenated with the file’s byte content.
+
+A SHA-256 hash is computed from this combination.
+
+The hash is then embedded into the PDF’s metadata under /Signature.
+
+This makes it computationally impractical to reproduce or tamper with the signature without altering the PDF structure — perfect for legal, financial, or internal audit documents.
+
+📂 PDF Metadata Embedding
+Metadata is added using PyPDF2 like so:
+
+python
+Copy
+Edit
+metadata.update({"/Signature": signature})
+This embeds the hash in a non-visible, structured format—keeping your document visually untouched but cryptographically verifiable.
+
+🧠 AI Prompt Handling
+Wayfarer integrates with IBM Granite's granite-3.3-8b-instruct model and fallback Replicate models. This enables:
+
+Guided error correction (if user command is invalid)
+
+Dynamic prompt construction based on chat history
+
+Extraction and processing of text from instructions.pdf for model context
+
+📜 License
+MIT License — Free for commercial or personal use. Please attribute the original authors.
+
+🧩 Future Roadmap
+🔐 AES-based payload encryption
+
+📈 Web dashboard for enterprise usage logs
+
+🗂️ Multi-file batch processing
+
+👥 Role-based access control (RBAC) for team collaboration
+
+🤝 Contributors
+Built by Luis Blanco with support from IBM’s Granite AI team and open-source communities.

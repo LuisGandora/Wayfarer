@@ -1,0 +1,18 @@
+[server]
+port = 8501
+
+[logger]
+level = "debug"
+
+[client]
+showErrorDetails = "full"
+toolbarMode = "minimal"
+
+[browser]
+serverAddress = "localhost"
+serverPort = 8501
+
+[theme]
+base = "dark"
+primaryColor = "45b4cb"
+textColor = "6d93e1"
