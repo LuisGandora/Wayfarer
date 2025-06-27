@@ -4,7 +4,7 @@ numpy
 PyPDF2
 git+https://github.com/ibm-granite-community/utils.git
 transformers
-langchain_ollama.llms
-langchain_community.llms
+langchain_ollama
+langchain_community
 replicate
 pydantic
