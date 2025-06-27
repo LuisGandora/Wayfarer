@@ -86,6 +86,7 @@ if uploaded_file:
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
     st.success(f"Uploaded: {uploaded_file.name}")
+st.divider()
 
 #Chatter
 user_input = st.chat_input("Type your message...")
