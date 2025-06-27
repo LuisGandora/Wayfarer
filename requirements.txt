@@ -2,7 +2,7 @@ streamlit
 st-files-connection
 numpy
 PyPDF2
-git+https://github.com/ibm
+"git+https://github.com/ibm-granite-community/utils"
 ibm_granite_community.notebook_utils
 transformers
 langchain_ollama.llms
