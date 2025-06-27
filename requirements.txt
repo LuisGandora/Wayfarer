@@ -1,2 +1,11 @@
 streamlit
 st-files-connection
+hashlib
+math
+numpy
+PyPDF2
+io
+langchain_ollama.llms
+langchain_community.llms
+ibm_granite_community.notebook_utils
+transformers
