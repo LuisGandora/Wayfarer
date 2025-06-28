@@ -17,7 +17,7 @@ from transformers import AutoTokenizer
 st.set_page_config(page_title="Wayfarer", layout="centered")
 col1, col2 = st.columns(2)
 with col1:
-    st.title("Wayfarer",width=300)
+    st.title("Wayfarer",width=100)
 with col2:
     with open("static/WayfarerLogo.gif", "rb") as f:
         data = base64.b64encode(f.read()).decode()
