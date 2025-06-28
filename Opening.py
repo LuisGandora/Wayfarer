@@ -15,9 +15,9 @@ from ibm_granite_community.notebook_utils import get_env_var
 from transformers import AutoTokenizer
 
 st.set_page_config(page_title="Wayfarer", layout="centered")
-col1, col2 = st.columns(2)
+col1, col2 = st.columns(3)
 with col1:
-    st.title("Wayfarer",width=100)
+    st.title("Wayfarer",width=200)
 with col2:
     with open("static/WayfarerLogo.gif", "rb") as f:
         data = base64.b64encode(f.read()).decode()
