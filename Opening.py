@@ -15,7 +15,7 @@ from ibm_granite_community.notebook_utils import get_env_var
 from transformers import AutoTokenizer
 
 st.set_page_config(page_title="Wayfarer", layout="centered")
-col1, col2 = st.columns(3)
+col1, col2, col3 = st.columns(3)
 with col1:
     st.title("Wayfarer",width=200)
 with col2:
@@ -23,6 +23,8 @@ with col2:
         data = base64.b64encode(f.read()).decode()
     st.markdown(f'<img src="data:image/gif;base64,{data}" '
                 f'width="100" height="100">', unsafe_allow_html=True)
+with col3:
+    st.write("", width=900)
 
 model_path = "ibm-granite/granite-3.3-8b-instruct"
 repAPI = st.secrets["REPLICATE_API_TOKEN"]
