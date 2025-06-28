@@ -6,6 +6,7 @@ import requests
 import Encryptor
 import PyPDF2
 import streamlit as st
+import base64
 from streamlit import session_state as ss
 from st_files_connection import FilesConnection as ss
 from langchain_ollama.llms import OllamaLLM
@@ -14,7 +15,15 @@ from ibm_granite_community.notebook_utils import get_env_var
 from transformers import AutoTokenizer
 
 st.set_page_config(page_title="Wayfarer", layout="centered")
-st.title("Wayfarer")
+col1, col2 = st.columns(2)
+with col1:
+    st.title("Wayfarer",width=300)
+with col2:
+    with open("static/WayfarerLogo.gif", "rb") as f:
+        data = base64.b64encode(f.read()).decode()
+    st.markdown(f'<img src="data:image/gif;base64,{data}" '
+                f'width="100" height="100">', unsafe_allow_html=True)
+
 model_path = "ibm-granite/granite-3.3-8b-instruct"
 repAPI = st.secrets["REPLICATE_API_TOKEN"]
 model = Replicate(

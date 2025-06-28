@@ -16,3 +16,6 @@ serverPort = 8501
 base = "dark"
 primaryColor = "45b4cb"
 textColor = "6d93e1"
+
+[server]
+enableStaticServing = true
