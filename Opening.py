@@ -9,6 +9,7 @@ import streamlit as st
 import base64
 from streamlit import session_state as ss
 from st_files_connection import FilesConnection as ss
+os.environ["REPLICATE_API_TOKEN"] = st.secrets["REPLICATE_API_TOKEN"]
 from langchain_ollama.llms import OllamaLLM
 from langchain_community.llms import Replicate  
 from ibm_granite_community.notebook_utils import get_env_var
@@ -27,10 +28,9 @@ with col3:
     st.write("", width=900)
 
 model_path = "ibm-granite/granite-3.3-8b-instruct"
-repAPI = st.secrets["REPLICATE_API_TOKEN"]
 model = Replicate(
     model = model_path,
-    replicate_api_token=repAPI,
+    replicate_api_token=st.secrets["REPLICATE_API_TOKEN"],
     model_kwargs={
         "temperature":0.0, #greedy
     },
