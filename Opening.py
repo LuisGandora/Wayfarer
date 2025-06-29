@@ -153,7 +153,7 @@ if(user_input):
         prompt +=  "\nUser: " + user_input + "\nAI:"
         
         # Call model
-        response = model.invoke(prompt + instructiontext)
+        response = model.invoke(prompt)
 
         
         st.write(f"AI: {response}\n")
